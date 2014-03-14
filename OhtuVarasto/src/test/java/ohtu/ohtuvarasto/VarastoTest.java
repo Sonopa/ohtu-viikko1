@@ -50,7 +50,6 @@ public class VarastoTest {
     public void lisaysEiMeneTilavuudenYli() {
         varasto.lisaaVarastoon(11);
 
-        // vapaata tilaa pitäisi vielä olla tilavuus-lisättävä määrä eli 2
         assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
     }
 
@@ -89,6 +88,21 @@ public class VarastoTest {
         double otettu = varasto.otaVarastosta(7);
         
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negatiivinenLisäysEiToimi() {
+        varasto.lisaaVarastoon(-2.0);
+        
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void negatiivinenOttoEiToimi() {
+        varasto.lisaaVarastoon(5);
+        varasto.otaVarastosta(-2.0);
+        
+        assertEquals(5, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
