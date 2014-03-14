@@ -85,7 +85,7 @@ public class VarastoTest {
     public void saldoNollaJosOttaaYli() {
         varasto.lisaaVarastoon(5);
 
-        double otettu = varasto.otaVarastosta(7);
+        varasto.otaVarastosta(7);
         
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
     }
